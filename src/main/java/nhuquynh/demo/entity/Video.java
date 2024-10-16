@@ -7,44 +7,35 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Entity
 @Table(name = "videos")
-@NamedQuery(name = "Video.findAll", query = "SELECT v FROM Video v")
-
-
+@NamedQuery(name = "Video.findAll", query = "SELECT c FROM Video c")
 public class Video implements Serializable {
-    private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "VideoId")
-    private String videoId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "videoID")
+    private int videoID;
 
-    @Column(name = "Active")
-    private int active;
-
-    @Column(name = "Description", nullable = true, length = 500)
-    private String description;
-
-    @Column(name = "Poster", nullable = true, length = 500)
-    private String poster;
-
-    @Column(name = "Title", nullable = true)
+    @Column(name = "title", columnDefinition = "NVARCHAR(255)")
     private String title;
 
+    @Column(name = "posterURL", columnDefinition = "NVARCHAR(500)")
+    private String posterURL;
 
-    @Column(name = "Views")
+    @Column(name = "description", columnDefinition = "NVARCHAR(500)")
+    private String description;
+
+    @Column(name = "views")
     private int views;
 
-    //bi-directional many-to-one association to Category
+    @Column(name = "active")
+    private int active;
 
-
-    @ManyToOne
-    @JoinColumn(name = "CategoryId")
-    private Category category;
-
-
+    @Column(name = "videoURL", columnDefinition = "NVARCHAR(500)")
+    private String videoURL;
 }

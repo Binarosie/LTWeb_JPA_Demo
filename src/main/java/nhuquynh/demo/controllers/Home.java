@@ -11,6 +11,7 @@ import nhuquynh.demo.configs.JPAConfig;
 import nhuquynh.demo.entity.Category;
 import nhuquynh.demo.entity.Role;
 import nhuquynh.demo.entity.User;
+import nhuquynh.demo.entity.Video;
 
 import java.io.IOException;
 
@@ -129,6 +130,9 @@ public class Home extends HttpServlet {
             category2.setImages("https://cdn.popsww.com/blog/sites/2/2023/06/thanh-guom-diet-quy-season-4.jpg");
             category2.setStatus(1);
             em.persist(category2);
+
+            //Chèn dữ liệu cho bảng Videos
+            
         }
         System.out.println("Data initialization completed");
         em.getTransaction().commit();
